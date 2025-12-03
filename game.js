@@ -10,9 +10,9 @@ function setup() {
 
 let canvasWidth = 400;
 let canvasHeight = 400;
-let character = new Character(175, 350, 50, 50);
-let platform = new Platform(100, 200);
-let platform2 = new Platform(200, 200);
+let character = new Character(175, canvasHeight - 50, 50, 50);
+let platform = new Platform(Math.random() * 320, 300);
+let platform2 = new Platform(Math.random() * 320, 225);
 
 function draw() {
   background(100, 100, 100);
@@ -22,10 +22,10 @@ function draw() {
   platform2.draw();
 
   // still platform
-  platform.x = 10;
+  /* platform.x = 10;
   if (platform.x + platform.w < 0) {
     platform.x = 500;
-  }
+  }*/
 
   if (
     character.y + character.h < 300 &&
@@ -49,7 +49,7 @@ function moveCharacter(e) {
     character.x += 10;
   }
   if (e.keyCode == 32) {
-    character.y -= 100;
+    character.y -= 150;
   }
 }
 document.onkeydown = moveCharacter;
