@@ -9,10 +9,18 @@ function setup() {
 // Death
 
 let canvasWidth = 400;
-let canvasHeight = 400;
-let character = new Character(175, canvasHeight - 50, 50, 50);
-let platform = new Platform(Math.random() * 320, 300);
-let platform2 = new Platform(Math.random() * 320, 225);
+let canvasHeight = 550;
+let character = new Character(
+  (canvasWidth - 50) / 2,
+  canvasHeight - 50,
+  50,
+  50
+);
+let platform = new Platform(
+  Math.random() * (canvasWidth - 80),
+  canvasHeight - 100
+);
+let platform2 = new Platform(Math.random() * (canvasWidth - 80), 225);
 
 function draw() {
   background(100, 100, 100);
@@ -28,10 +36,10 @@ function draw() {
   }*/
 
   if (
-    character.y + character.h < 300 &&
+    character.y + character.h < canvasHeight &&
     !character.isColliding(character, platform)
   ) {
-    character.y += 10;
+    character.y += 5;
   }
 }
 
