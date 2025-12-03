@@ -1,4 +1,4 @@
-import platform from "platform";
+import { Platform } from "platform";
 import { Character } from "./character";
 import { movingPlatform } from "./movingPlatform";
 
@@ -11,25 +11,20 @@ function setup() {
 let canvasWidth = 400;
 let canvasHeight = 400;
 let character = new Character(175, 350, 50, 50);
+let platform = new Platform(100, 200);
+let platform2 = new Platform(200, 200);
 
 function draw() {
   background(100, 100, 100);
 
   character.draw();
   platform.draw();
+  platform2.draw();
 
   // still platform
   platform.x = 10;
   if (platform.x + platform.w < 0) {
     platform.x = 500;
-  }
-  movingPlatform.draw();
-
-  movingPlatform.move();
-  if (movingPlatform.x < 50) {
-    movingPlatform.dir = -5;
-  } else if (movingPlatform.x > 250) {
-    movingPlatform.dir = 5;
   }
 
   if (
