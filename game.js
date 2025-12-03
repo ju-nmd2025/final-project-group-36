@@ -1,47 +1,47 @@
 import platform from "platform";
 import { Character } from "./character";
+import { movingPlatform } from "./movingPlatform";
 
 function setup() {
-    createCanvas(canvasWidth, canvasHeight);
+  createCanvas(canvasWidth, canvasHeight);
 }
 
-// Obstacle / Spike / Death
-function drawObstacle() {
-    push();
-    fill("red");
-    triangle(180, 300, 210, 240, 240, 300);
-    pop();
-}
+// Death
 
 let canvasWidth = 400;
 let canvasHeight = 400;
-let floor = 300;
 let character = new Character(50, 50, 50, 50);
 
 function draw() {
-    background(100, 100, 100);
+  background(100, 100, 100);
 
-    character.draw();
-    platform.draw();
+  character.draw();
+  platform.draw();
 
-    platform.x -= 10;
-    if (platform.x + platform.w < 0) {
-        platform.x = 500;
-    }
+  // still platform
+  platform.x = 10;
+  if (platform.x + platform.w < 0) {
+    platform.x = 500;
+  }
+  movingPlatform.draw();
 
-    if (
-        character.y + character.h < 300 &&
-        !character.isColliding(character, platform)
-    ) {
-        character.y += 10;
-    }
-
-    // Floor
-    line(0, floor, canvasWidth, floor);
+  movingPlatform.move();
+  if (movingPlatform.x < 50) {
+    movingPlatform.dir = -5;
+  } else if (movingPlatform.x > 250) {
+    movingPlatform.dir = 5;
+  }
 }
 
-function keyPressed() {
+if (
+  character.y + character.h < 300 &&
+  !character.isColliding(character, platform)
+) {
+  character.y += 10;
+}
+
+/*floor code becomes platform function keyPressed() {
     if (character.y + character.h === floor || character.isColliding(character, platform)) {
         character.y -= 120;
     }
-}
+}*/
