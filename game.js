@@ -37,7 +37,8 @@ function draw() {
 
   if (
     character.y + character.h < canvasHeight &&
-    !character.isColliding(character, platform)
+    !character.isColliding(character, platform) &&
+    !character.isColliding(character, platform2)
   ) {
     character.y += 5;
   }
