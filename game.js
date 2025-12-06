@@ -18,27 +18,13 @@ let character = new Character(
 );
 let platforms = [];
 
-let platform = new Platform(
-  Math.random() * (canvasWidth - 80),
-  canvasHeight - 100
-);
-let platform2 = new Platform(
-  Math.random() * (canvasWidth - 80),
-  canvasHeight - 200
-);
-let platform3 = new Platform(
-  Math.random() * (canvasWidth - 80),
-  canvasHeight - 300
-);
-let platform4 = new Platform(
-  Math.random() * (canvasWidth - 80),
-  canvasHeight - 400
-);
-let platform5 = new Platform(
-  Math.random() * (canvasWidth - 80),
-  canvasHeight - 500
-);
+let platform = new Platform(canvasWidth, canvasHeight, 1);
+let platform2 = new Platform(canvasWidth, canvasHeight, 2);
+let platform3 = new Platform(canvasWidth, canvasHeight, 3);
+let platform4 = new Platform(canvasWidth, canvasHeight, 4);
+let platform5 = new Platform(canvasWidth, canvasHeight, 5);
 platforms.push(platform, platform2, platform3, platform4, platform5);
+
 function draw() {
   background(100, 100, 100);
 
@@ -53,9 +39,11 @@ function draw() {
     platform.x = 500;
   }*/
 
-  character.gravity(character, platform, platform2, canvasHeight);
   character.firstJumpFunction(character, canvasHeight);
-  character.jump(character);
+  for (let thePlatform of platforms) {
+    character.gravity(character, thePlatform, canvasHeight);
+    character.jump(character, thePlatform);
+  }
 }
 
 function moveCharacter(e) {

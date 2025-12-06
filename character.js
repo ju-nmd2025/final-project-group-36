@@ -12,25 +12,26 @@ export default class Character {
     rect(this.x, this.y, this.w, this.h);
   }
 
-  isColliding(character, platform) {
-    if (
-      platform.y === character.y + character.w &&
-      platform.x <= character.x + character.w &&
-      platform.x + platform.w >= character.x
-    ) {
-      return true;
-    } else {
-      return false;
+  /*isColliding(character, platforms) {
+    for (let thePlatform of platforms) {
+      if (
+        thePlatform.y === character.y + character.w &&
+        thePlatform.x <= character.x + character.w &&
+        thePlatform.x + thePlatform.w >= character.x
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     }
-  }
+  }*/
 
-  gravity(character, platform, platform2, canvasHeight) {
+  gravity(character, platform, canvasHeight) {
     if (
       character.y + character.h < canvasHeight &&
-      !character.isColliding(character, platform) &&
-      !character.isColliding(character, platform2)
+      !platform.isColliding(platform, character)
     ) {
-      character.y += 5;
+      character.y += 2;
     }
   }
 
@@ -40,8 +41,8 @@ export default class Character {
     }
   }
 
-  jump(character) {
-    if (character.isColliding(character, platform)) {
+  jump(character, platform) {
+    if (platform.isColliding(platform, character)) {
       character.y -= 150;
       this.firstJump = false;
     }
