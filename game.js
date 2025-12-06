@@ -35,20 +35,10 @@ function draw() {
     platform.x = 500;
   }*/
 
-  if (
-    character.y + character.h < canvasHeight &&
-    !character.isColliding(character, platform) &&
-    !character.isColliding(character, platform2)
-  ) {
-    character.y += 5;
-  }
+  character.gravity(character, platform, platform2, canvasHeight);
+  character.firstJumpFunction(character, canvasHeight);
+  character.jump(character);
 }
-
-/*floor code becomes platform function keyPressed() {
-    if (character.y + character.h === floor || character.isColliding(character, platform)) {
-        character.y -= 120;
-    }
-}*/
 
 function moveCharacter(e) {
   if (e.keyCode == 37) {

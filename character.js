@@ -4,6 +4,7 @@ export default class Character {
     this.y = y;
     this.w = w;
     this.h = h;
+    this.firstJump = true;
     //		this.isOnPlatForm = false;
   }
 
@@ -20,6 +21,29 @@ export default class Character {
       return true;
     } else {
       return false;
+    }
+  }
+
+  gravity(character, platform, platform2, canvasHeight) {
+    if (
+      character.y + character.h < canvasHeight &&
+      !character.isColliding(character, platform) &&
+      !character.isColliding(character, platform2)
+    ) {
+      character.y += 5;
+    }
+  }
+
+  firstJumpFunction(character, canvasHeight) {
+    if (this.firstJump === true && character.y + character.h == canvasHeight) {
+      character.y -= 200;
+    }
+  }
+
+  jump(character) {
+    if (character.isColliding(character, platform)) {
+      character.y -= 150;
+      this.firstJump = false;
     }
   }
 }
