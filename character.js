@@ -47,4 +47,12 @@ export default class Character {
       this.firstJump = false;
     }
   }
+
+  teleport(character, canvasWidth) {
+    if (character.x >= canvasWidth - character.w) {
+      character.x = 0;
+    } else if (character.x <= 0) {
+      character.x = canvasWidth - character.w;
+    }
+  }
 }

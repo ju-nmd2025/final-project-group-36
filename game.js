@@ -44,6 +44,7 @@ function draw() {
     character.gravity(character, thePlatform, canvasHeight);
     character.jump(character, thePlatform);
   }
+  character.teleport(character, canvasWidth);
 }
 
 function moveCharacter(e) {
