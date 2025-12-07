@@ -35,16 +35,28 @@ export default class Character {
     }
   }
 
-  firstJumpFunction(character, canvasHeight) {
-    if (this.firstJump === true && character.y + character.h == canvasHeight) {
+  firstJumpFunction(character, canvasHeight, status) {
+    if (
+      character.firstJump === true &&
+      character.y + character.h == canvasHeight
+    ) {
       character.y -= 200;
     }
   }
-
+  gameOver(character, canvasHeight, button) {
+    if (
+      character.firstJump === false &&
+      character.y + character.h == canvasHeight
+    ) {
+      button.status = "game over";
+      console.log(button.status);
+      character.firstJump = true;
+    }
+  }
   jump(character, platform) {
     if (platform.isColliding(platform, character)) {
       character.y -= 150;
-      this.firstJump = false;
+      character.firstJump = false;
     }
   }
 

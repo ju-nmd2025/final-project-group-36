@@ -37,12 +37,16 @@ function draw() {
     for (let thePlatform of platforms) {
       thePlatform.draw();
     }
-    character.firstJumpFunction(character, canvasHeight);
+    character.firstJumpFunction(character, canvasHeight, button.status);
     for (let thePlatform of platforms) {
       character.gravity(character, thePlatform, canvasHeight);
       character.jump(character, thePlatform);
     }
     character.teleport(character, canvasWidth);
+    character.gameOver(character, canvasHeight, button);
+  } else if (button.status === "game over") {
+    button.draw();
+    text("game over", canvasWidth / 2 - 100, canvasHeight / 2);
   }
 
   // still platform

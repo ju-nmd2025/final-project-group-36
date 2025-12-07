@@ -9,10 +9,12 @@ export default class Button {
 
   draw() {
     push();
-    fill(0, 0, 0);
+    fill(0, 200, 100);
     rect(this.x, this.y, this.w, this.h + 10);
-    text("Start", this.x + 50, this.y + 55);
+    pop();
     push();
+    text("Start", this.x + 50, this.y + 55);
+    pop();
 
     if (
       mouseX > this.x &&
