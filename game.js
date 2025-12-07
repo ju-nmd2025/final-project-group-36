@@ -1,12 +1,14 @@
 import { Platform } from "platform";
 import { Character } from "./character";
 import { movingPlatform } from "./movingPlatform";
+import { Button } from "./button";
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 }
 
 // Death
+let status = "menu";
 
 let canvasWidth = 400;
 let canvasHeight = 550;
@@ -17,6 +19,7 @@ let character = new Character(
   50
 );
 let platforms = [];
+let button = new Button(canvasWidth, canvasHeight, status);
 
 let platform = new Platform(canvasWidth, canvasHeight, 1);
 let platform2 = new Platform(canvasWidth, canvasHeight, 2);
@@ -27,10 +30,19 @@ platforms.push(platform, platform2, platform3, platform4, platform5);
 
 function draw() {
   background(100, 100, 100);
-
-  character.draw();
-  for (let thePlatform of platforms) {
-    thePlatform.draw();
+  if (button.status === "menu") {
+    button.draw();
+  } else if (button.status === "play") {
+    character.draw();
+    for (let thePlatform of platforms) {
+      thePlatform.draw();
+    }
+    character.firstJumpFunction(character, canvasHeight);
+    for (let thePlatform of platforms) {
+      character.gravity(character, thePlatform, canvasHeight);
+      character.jump(character, thePlatform);
+    }
+    character.teleport(character, canvasWidth);
   }
 
   // still platform
@@ -38,13 +50,6 @@ function draw() {
   if (platform.x + platform.w < 0) {
     platform.x = 500;
   }*/
-
-  character.firstJumpFunction(character, canvasHeight);
-  for (let thePlatform of platforms) {
-    character.gravity(character, thePlatform, canvasHeight);
-    character.jump(character, thePlatform);
-  }
-  character.teleport(character, canvasWidth);
 }
 
 function moveCharacter(e) {
