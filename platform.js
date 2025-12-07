@@ -4,6 +4,7 @@ export default class Platform {
     this.y = canvasHeight - index * 100;
     this.w = 80;
     this.h = 20;
+    this.index = index;
   }
 
   draw() {
@@ -23,5 +24,14 @@ export default class Platform {
     } else {
       return false;
     }
+  }
+  movingUp(platform, character, canvasHeight) {
+    if (character.y <= canvasHeight / 2) {
+      platform.y += 2;
+    }
+  }
+  reGenerate(platform, canvasHeight, canvasWidth) {
+    platform.x = Math.random() * (canvasWidth - 80);
+    platform.y = canvasHeight - platform.index * 100;
   }
 }

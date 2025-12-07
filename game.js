@@ -41,12 +41,23 @@ function draw() {
     for (let thePlatform of platforms) {
       character.gravity(character, thePlatform, canvasHeight);
       character.jump(character, thePlatform);
+      thePlatform.movingUp(thePlatform, character, canvasHeight);
+    }
+    for (let thePlatform of platforms) {
+      if (thePlatform.y + thePlatform.h >= canvasHeight) {
+        thePlatform.y = platforms[platforms.length - 1].y - 100;
+        platforms.push(thePlatform);
+        platforms.shift();
+      }
     }
     character.teleport(character, canvasWidth);
     character.gameOver(character, canvasHeight, button);
   } else if (button.status === "game over") {
     button.draw();
     text("game over", canvasWidth / 2 - 100, canvasHeight / 2);
+    for (let thePlatform of platforms) {
+      thePlatform.reGenerate(thePlatform, canvasHeight, canvasWidth);
+    }
   }
 
   // still platform
