@@ -77,8 +77,5 @@ function moveCharacter(e) {
   if (e.keyCode == 39) {
     character.x += 10;
   }
-  if (e.keyCode == 32) {
-    character.y -= 150;
-  }
 }
 document.onkeydown = moveCharacter;
