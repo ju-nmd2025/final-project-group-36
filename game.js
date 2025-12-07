@@ -58,6 +58,8 @@ function draw() {
     for (let thePlatform of platforms) {
       thePlatform.reGenerate(thePlatform, canvasHeight, canvasWidth);
     }
+    platforms.splice(0);
+    platforms.push(platform, platform2, platform3, platform4, platform5);
   }
 
   // still platform

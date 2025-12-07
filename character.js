@@ -49,7 +49,6 @@ export default class Character {
       character.y + character.h == canvasHeight
     ) {
       button.status = "game over";
-      console.log(button.status);
       character.firstJump = true;
     }
   }

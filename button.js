@@ -24,7 +24,6 @@ export default class Button {
       mouseIsPressed === true
     ) {
       this.status = "play";
-      console.log(this.status);
     }
   }
 }

@@ -16,8 +16,8 @@ export default class Platform {
 
   isColliding(platform, character) {
     if (
-      platform.y <= character.y + character.w &&
-      character.y + character.w <= platform.y + platform.h &&
+      platform.y <= character.y + character.h &&
+      character.y + character.h <= platform.y + platform.h &&
       platform.x <= character.x + character.w &&
       platform.x + platform.w >= character.x
     ) {
