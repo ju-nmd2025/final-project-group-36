@@ -1,6 +1,6 @@
 import { Platform } from "platform";
 import { Character } from "./character";
-import { movingPlatform } from "./movingPlatform";
+import { MovingPlatform } from "./movingPlatform";
 import { Button } from "./button";
 
 function setup() {
@@ -23,10 +23,10 @@ let button = new Button(canvasWidth, canvasHeight, status);
 
 let platform = new Platform(canvasWidth, canvasHeight, 1);
 let platform2 = new Platform(canvasWidth, canvasHeight, 2);
-let platform3 = new Platform(canvasWidth, canvasHeight, 3);
+let movPlatform3 = new MovingPlatform(canvasHeight, 3);
 let platform4 = new Platform(canvasWidth, canvasHeight, 4);
 let platform5 = new Platform(canvasWidth, canvasHeight, 5);
-platforms.push(platform, platform2, platform3, platform4, platform5);
+platforms.push(platform, platform2, movPlatform3, platform4, platform5);
 
 function draw() {
   background(100, 100, 100);
@@ -37,6 +37,7 @@ function draw() {
     for (let thePlatform of platforms) {
       thePlatform.draw();
     }
+    movPlatform3.move();
     character.firstJumpFunction(character, canvasHeight, button.status);
     for (let thePlatform of platforms) {
       character.gravity(character, thePlatform, canvasHeight);
@@ -59,7 +60,7 @@ function draw() {
       thePlatform.reGenerate(thePlatform, canvasHeight, canvasWidth);
     }
     platforms.splice(0);
-    platforms.push(platform, platform2, platform3, platform4, platform5);
+    platforms.push(platform, platform2, movPlatform3, platform4, platform5);
   }
 
   // still platform
