@@ -47,6 +47,7 @@ function draw() {
     for (let thePlatform of platforms) {
       if (thePlatform.y + thePlatform.h >= canvasHeight) {
         thePlatform.y = platforms[platforms.length - 1].y - 100;
+        thePlatform.x = Math.random() * (canvasWidth - 80);
         platforms.push(thePlatform);
         platforms.shift();
       }
