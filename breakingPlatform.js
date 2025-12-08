@@ -51,6 +51,9 @@ if(platform.firstcollide == true){
       this.fill[0] = 100;
       this.fill[1] = 100;
       this.fill[2] = 100;
+      this.stroke[0] = 100;
+      this.stroke[1] = 100;
+      this.stroke[2] = 100;
     } else if (platform.firstcollide == true) {
       this.fill[0] = 0;
       this.fill[1] = 0;

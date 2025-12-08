@@ -44,10 +44,10 @@ function draw() {
   if (button.status === "menu") {
     button.draw();
   } else if (button.status === "play") {
-    character.draw();
     for (let thePlatform of platforms) {
       thePlatform.draw();
     }
+    character.draw();
     movPlatform3.move();
     character.firstJumpFunction(character, canvasHeight, button.status);
     for (let thePlatform of platforms) {
