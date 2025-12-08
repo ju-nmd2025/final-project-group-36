@@ -56,6 +56,9 @@ export default class Character {
     if (platform.isColliding(platform, character)) {
       character.y -= 150;
       character.firstJump = false;
+      if (platform.index === 5) {
+        platform.firstcollide = false;
+      }
     }
   }
 
