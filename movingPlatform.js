@@ -1,7 +1,7 @@
 export default class MovingPlatform {
   constructor(canvasHeight, index) {
     this.x = 51;
-    this.y = canvasHeight - index * 100;
+    this.y = canvasHeight - index * 75;
     this.w = 80;
     this.h = 20;
     this.index = index;
@@ -34,7 +34,7 @@ export default class MovingPlatform {
   }
   reGenerate(movingPlatform, canvasHeight, canvasWidth) {
     movingPlatform.x = 51;
-    movingPlatform.y = canvasHeight - movingPlatform.index * 100;
+    movingPlatform.y = canvasHeight - movingPlatform.index * 75;
   }
 
   move() {

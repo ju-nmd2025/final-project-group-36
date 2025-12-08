@@ -1,7 +1,7 @@
 export default class BreakingPlatform {
   constructor(canvasWidth, canvasHeight, index) {
     this.x = Math.random() * (canvasWidth - 80);
-    this.y = canvasHeight - index * 100;
+    this.y = canvasHeight - index * 75;
     this.w = 80;
     this.h = 20;
     this.index = index;
@@ -38,7 +38,7 @@ export default class BreakingPlatform {
   }
   reGenerate(platform, canvasHeight, canvasWidth) {
     platform.x = Math.random() * (canvasWidth - 80);
-    platform.y = canvasHeight - platform.index * 100;
+    platform.y = canvasHeight - platform.index * 75;
   }
 
   /*  isVisible(platform){

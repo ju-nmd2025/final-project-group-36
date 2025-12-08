@@ -27,7 +27,17 @@ let platform2 = new Platform(canvasWidth, canvasHeight, 2);
 let movPlatform3 = new MovingPlatform(canvasHeight, 3);
 let platform4 = new Platform(canvasWidth, canvasHeight, 4);
 let brPlatform5 = new BreakingPlatform(canvasWidth, canvasHeight, 5);
-platforms.push(platform, platform2, movPlatform3, platform4, brPlatform5);
+let platform6 = new Platform(canvasWidth, canvasHeight, 6);
+let platform7 = new Platform(canvasWidth, canvasHeight, 7);
+platforms.push(
+  platform,
+  platform2,
+  movPlatform3,
+  platform4,
+  brPlatform5,
+  platform6,
+  platform7
+);
 
 function draw() {
   background(100, 100, 100);
@@ -47,7 +57,7 @@ function draw() {
     }
     for (let thePlatform of platforms) {
       if (thePlatform.y + thePlatform.h >= canvasHeight) {
-        thePlatform.y = platforms[platforms.length - 1].y - 100;
+        thePlatform.y = platforms[platforms.length - 1].y - 75;
         thePlatform.x = Math.random() * (canvasWidth - 80);
         platforms.push(thePlatform);
         platforms.shift();
@@ -69,7 +79,15 @@ function draw() {
       }
     }
     platforms.splice(0);
-    platforms.push(platform, platform2, movPlatform3, platform4, brPlatform5);
+    platforms.push(
+      platform,
+      platform2,
+      movPlatform3,
+      platform4,
+      brPlatform5,
+      platform6,
+      platform7
+    );
   }
 
   // still platform
