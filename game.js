@@ -97,15 +97,14 @@ function draw() {
   }*/
 }
 
-function moveCharacter(e) {
-  if (e.keyCode == 37) {
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
     character.x -= 20;
   }
-  if (e.keyCode == 39) {
+  if (keyCode === RIGHT_ARROW) {
     character.x += 20;
   }
 }
-document.onkeydown = moveCharacter;
 
 window.setup = setup;
 
