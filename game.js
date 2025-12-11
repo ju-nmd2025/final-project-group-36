@@ -1,14 +1,15 @@
-import { Platform } from "platform";
-import { Character } from "./character";
-import { MovingPlatform } from "./movingPlatform";
-import { Button } from "./button";
-import { BreakingPlatform } from "./breakingPlatform";
+import { Platform } from "./platform.js";
+import { Character } from "./character.js";
+import { MovingPlatform } from "./movingPlatform.js";
+import { Button } from "./button.js";
+import { BreakingPlatform } from "./breakingPlatform.js";
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 }
 
-// Death
+window.setup = setup;
+
 let status = "menu";
 
 let canvasWidth = 400;
@@ -105,8 +106,6 @@ function keyPressed() {
     character.x += 20;
   }
 }
-
-window.setup = setup;
 
 window.draw = draw;
 

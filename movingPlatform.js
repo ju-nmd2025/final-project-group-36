@@ -46,3 +46,5 @@ export default class MovingPlatform {
     }
   }
 }
+
+export { MovingPlatform };

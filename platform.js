@@ -36,3 +36,5 @@ export default class Platform {
     platform.y = canvasHeight - platform.index * 75;
   }
 }
+
+export { Platform };

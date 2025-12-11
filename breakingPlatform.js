@@ -64,3 +64,5 @@ if(platform.firstcollide == true){
     }
   }
 }
+
+export { BreakingPlatform };
